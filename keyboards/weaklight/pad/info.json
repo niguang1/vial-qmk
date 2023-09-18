@@ -1,0 +1,63 @@
+{
+  "manufacturer": "Freya",
+  "keyboard_name": "splaytoraid",
+  "maintainer": "freya-irl",
+  "url": "https://github.com/freya-irl/splaytoraid40",
+  "development_board": "bluepill",
+  "bootloader": "stm32duino",
+  "diode_direction": "COL2ROW",
+  "matrix_pins": {
+      "cols": ["A8", "B14", "C6", "B11", "B10"],
+      "rows": ["C7", "B13", "B1", "B0", "C5"]
+  },
+  "usb": {
+      "device_version": "1.0.0",
+      "pid": "0xCB00",
+      "vid": "0x2004"
+  },
+  "features": {
+      "extrakey": true,
+      "rgb_matrix": false,
+      "bootmagic": true,
+      "console": true,
+      "mousekey": true,
+      "nkro": true
+  },
+  "bootmagic": {
+      "matrix": [0, 4]
+  },
+  "build": {
+      "lto": true
+  },
+  "encoder": {
+      "rotary": [
+          { "pin_a": "A8", "pin_b": "C9", "resolution": 2 },
+          { "pin_a": "B12", "pin_b": "A6", "resolution": 2 }
+      ]
+  },
+  "layouts": {
+      "LAYOUT": {
+          "layout": [
+              { "label": "K00", "matrix": [0, 0], "x": 0, "y": 0 },
+              { "label": "K04", "matrix": [0, 4], "x": 4, "y": 0 },
+              { "label": "K10", "matrix": [1, 0], "x": 0, "y": 1 },
+              { "label": "K11", "matrix": [1, 1], "x": 1, "y": 1 },
+              { "label": "K12", "matrix": [1, 2], "x": 2, "y": 1 },
+              { "label": "K13", "matrix": [1, 3], "x": 3, "y": 1 },
+              { "label": "K20", "matrix": [2, 0], "x": 0, "y": 2 },
+              { "label": "K21", "matrix": [2, 1], "x": 1, "y": 2 },
+              { "label": "K22", "matrix": [2, 2], "x": 2, "y": 2 },
+              { "label": "K23", "matrix": [2, 3], "x": 3, "y": 2 },
+              { "label": "K24", "matrix": [2, 4], "x": 4, "y": 1, "h": 2 },
+              { "label": "K30", "matrix": [3, 0], "x": 0, "y": 3 },
+              { "label": "K31", "matrix": [3, 1], "x": 1, "y": 3 },
+              { "label": "K32", "matrix": [3, 2], "x": 2, "y": 3 },
+              { "label": "K33", "matrix": [3, 3], "x": 3, "y": 3 },
+              { "label": "K40", "matrix": [4, 0], "x": 0, "y": 4 },
+              { "label": "K41", "matrix": [4, 1], "x": 1.5, "y": 4, "w": 2 },
+              { "label": "K43", "matrix": [4, 3], "x": 3, "y": 4 },
+              { "label": "K44", "matrix": [4, 4], "x": 4, "y": 3.5, "h": 2 }
+          ]
+      }
+  }
+}
