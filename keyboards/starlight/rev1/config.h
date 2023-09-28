@@ -4,7 +4,7 @@
 #define MATRIX_ROWS 5
 #define MATRIX_COLS 15
 
-#define TAPPING_TERM 200
+#define TAPPING_TERM 160
 
 
 #define MOUSEKEY_INTERVAL 20
@@ -106,5 +106,7 @@
 #define RGB_MATRIX_DEFAULT_HUE 128 // Sets the default hue value, if none has been set
 #define RGB_MATRIX_DEFAULT_SAT 255 // Sets the default saturation value, if none has been set
 #define RGB_MATRIX_DEFAULT_VAL RGB_MATRIX_MAXIMUM_BRIGHTNESS // Sets the default brightness value, if none has been set
+
+#define RGB_MATRIX_TYPING_HEATMAP_INCREASE_STEP 8
 
 #define RGB_TRIGGER_ON_KEYDOWN

@@ -1,5 +1,5 @@
 {
-    "name": "WeaklightV2",
+    "name": "StarLightV1",
     "vendorId": "0x2004",
     "productId": "0xCB00",
     "matrix": {"rows": 5, "cols": 15},

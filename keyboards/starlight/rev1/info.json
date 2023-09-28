@@ -1,8 +1,8 @@
 {
   "manufacturer": "dfxsh",
-  "keyboard_name": "WeaklightV2",
-  "maintainer": "freya-irl",
-  "url": "https://github.com/freya-irl/splaytoraid40",
+  "keyboard_name": "StarLightV1",
+  "maintainer": "dfxsh",
+  "url": "https://github.com/niguang1/",
   "bootloader": "stm32duino",
   "diode_direction": "COL2ROW",
   "matrix_pins": {

@@ -109,6 +109,35 @@ void keyboard_post_init_user(void) {
 
 }
 
+void rgb_matrix_layer_helper(uint8_t hue, uint8_t sat, uint8_t val, uint8_t led_min, uint8_t led_max) {
+    HSV hsv = {hue, sat, val};
+    if (hsv.v > rgb_matrix_get_val()) {
+        hsv.v = rgb_matrix_get_val();
+    }
+
+    RGB rgb = hsv_to_rgb(hsv);
+    for (uint8_t i = 0; i < led_max; i++) {
+        if (HAS_FLAGS(g_led_config.flags[i], LED_FLAG_UNDERGLOW)) {
+            rgb_matrix_set_color(i, rgb.r, rgb.g, rgb.b);
+        }
+    }
+}
+
+bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
+    switch (get_highest_layer(layer_state | default_layer_state)) {
+        case 1:
+            rgb_matrix_layer_helper(HSV_PURPLE, led_min, led_max);
+            break;
+        case 2:
+            rgb_matrix_layer_helper(HSV_YELLOW, led_min, led_max);
+            break;
+        default:
+            rgb_matrix_layer_helper(HSV_OFF, led_min, led_max);
+            break;
+    }
+    return false;
+}
+
 bool rgb_matrix_indicators_kb(void) {
     if (!rgb_matrix_indicators_user()) {
         return false;
@@ -116,12 +145,12 @@ bool rgb_matrix_indicators_kb(void) {
 
     if(user_config.RGB_amin == 0)
     {
-        rgb_matrix_set_color_all(0x00,0x00,0x00);
+        rgb_matrix_set_color_all(RGB_OFF);
     }
 
     if( 1 == host_keyboard_led_state().caps_lock )
     {
-        rgb_matrix_set_color(29, 0xFF,0x00,0x00);
+        rgb_matrix_set_color(29, RGB_RED);
     }
     
 #if 0
@@ -130,14 +159,14 @@ bool rgb_matrix_indicators_kb(void) {
         rgb_matrix_set_color(1, 0xFF,0x00,0x00);
     }
 # endif
-    if ( 1 == get_highest_layer(layer_state) )
-    {
-        rgb_matrix_set_color(2, 0xFF,0x00,0x00);
-    }
-    if ( 2 == get_highest_layer(layer_state) )
-    {
-        rgb_matrix_set_color(3, 0xFF,0x00,0x00);
-    }
+    // if ( 1 == get_highest_layer(layer_state) )
+    // {
+    //     rgb_matrix_set_color(2, 0xFF,0x00,0x00);
+    // }
+    // if ( 2 == get_highest_layer(layer_state) )
+    // {
+    //     rgb_matrix_set_color(3, 0xFF,0x00,0x00);
+    // }
     return true;
 }
 
@@ -165,9 +194,9 @@ led_config_t g_led_config = { {
     {    56,    57,    58,    59,NO_LED,NO_LED,    60,NO_LED,    61,    62,    63,    64,    65,    66,NO_LED}
 }, {
     {0,0},{16,0},{32,0},{48,0},{64,0},{80,0},{96,0},{112,0},{128,0},{144,0},{160,0},{176,0},{192,0},{208,0},{224,0},
-    {4,16},{24,16},{40,16},{56,16},{72,16},{88,16},{104,16},{120,16},{136,16},{152,16},{168,16},{184,16},{200,16},{220,16},
+    {220,16},{200,16},{184,16},{168,16},{152,16},{136,16},{120,16},{104,16},{88,16},{72,16},{56,16},{40,16},{24,16},{4,16},
     {6,32},{28,32},{44,32},{60,32},{76,32},{92,32},{108,32},{124,32},{140,32},{156,32},{172,32},{188,32},{214,32},
-    {8,48},{32,48},{48,48},{64,48},{80,48},{96,48},{112,48},{128,48},{144,48},{160,48},{176,48},{192,48},{208,48},{224,48},
+    {224,48},{208,48},{192,48},{176,48},{160,48},{144,48},{128,48},{112,48},{96,48},{80,48},{64,48},{48,48},{32,48},{8,48},
     {6,64},{30,64},{50,64},{70,64},{104,64},{138,64},{158,64},{176,64},{192,64},{208,64},{224,64},
     {23,8},{51,8},{79,8},{106,8},{134,8},{162,8},{189,8},{217,8},
     {8,56},{26,56},{54,56},{77,56},{110,56},{134,56},{162,56},{190,56},{217,56}
