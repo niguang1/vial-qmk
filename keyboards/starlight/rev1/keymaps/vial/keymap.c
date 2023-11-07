@@ -126,10 +126,13 @@ void rgb_matrix_layer_helper(uint8_t hue, uint8_t sat, uint8_t val, uint8_t led_
 bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
     switch (get_highest_layer(layer_state | default_layer_state)) {
         case 1:
-            rgb_matrix_layer_helper(HSV_PURPLE, led_min, led_max);
+            rgb_matrix_layer_helper(HSV_GOLDENROD, led_min, led_max);
             break;
         case 2:
-            rgb_matrix_layer_helper(HSV_YELLOW, led_min, led_max);
+            rgb_matrix_layer_helper(HSV_SPRINGGREEN, led_min, led_max);
+            break;
+        case 3:
+            rgb_matrix_layer_helper(HSV_MAGENTA, led_min, led_max);
             break;
         default:
             rgb_matrix_layer_helper(HSV_OFF, led_min, led_max);
